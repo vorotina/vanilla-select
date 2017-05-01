@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VanillaSelect - standalone replacement for select elements</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300">
+	<link rel="stylesheet" type="text/css" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="src/vanilla-select.css">
+	<style>
+		*{padding:0; margin:0;}
+		body {
+			font: 300 15px Roboto, Calibri;
+		}
+
+		.content {
+			margin: 50px auto 0;
+			width: 300px;
+		}
+
+		h2 {
+			margin-bottom:10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h2>EXAMPLE:</h2>
+		<div ref="select"></div>
+		<div ref="select"></div>
+	</div>
+
+	<script src="src/vanilla-select.js"></script>
+	<script>
+
+		const source = [{
+			icon: 'fa-font',
+			value: 'Abril Fatface'
+			},
+			{
+				icon: 'fa-font',
+				value: 'Allura'
+			},
+			{
+				icon: 'fa-font',
+				value: 'Amatic SC'
+			}
+		];
+
+		let select = Array.from(document.querySelectorAll('[ref="select"]')).map(el => {
+			return new Select({
+				placeholder: 'Select Font',
+				dataset: source,
+				onSelected: item => console.log(item)
+			}).componentMount({
+				el: el
+			});
+		});
+
+	</script>
+</body>
+
+</html>
