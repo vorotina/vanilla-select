@@ -40,7 +40,7 @@
 
 .select__dropdown {
 	position: absolute;
-	width: 100%;
+	width: calc(100% - 2px);
 	border-radius: 5px;
 	border: 1px solid #2d8682;
 	transition: all .3s;

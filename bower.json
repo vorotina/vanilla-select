@@ -1,0 +1,22 @@
+{
+  "name": "vanilla-select",
+  "description": "Standalone replacement for select boxes",
+  "main": [
+    "./dist/vanilla-select.min.js",
+    "./dist/vanilla-select.min.css"
+  ],
+  "authors": [
+    "Kateryna Vorotina"
+  ],
+  "ignore": [
+    "node_modules"
+  ],
+  "keywords": [
+    "vanilla",
+    "select",
+    "dropdown",
+    "js"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vorotina/vanilla-select"
+}

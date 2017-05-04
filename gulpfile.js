@@ -1,13 +1,13 @@
-var gulp = require('gulp');
-var clean = require('gulp-clean');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
-var cssmin = require('gulp-cssmin');
-var csslint = require('gulp-csslint');
-var autoPrefixer = require('gulp-autoprefixer');
-var stripDebug = require('gulp-strip-debug');
-var server = require('gulp-server-livereload');
+const gulp = require('gulp');
+const clean = require('gulp-clean');
+const concat = require('gulp-concat');
+const jshint = require('gulp-jshint');
+const cssmin = require('gulp-cssmin');
+const csslint = require('gulp-csslint');
+const stripDebug = require('gulp-strip-debug');
+const closureCompiler = require('gulp-closure-compiler');
+const server = require('gulp-server-livereload');
+var gzip = require('gulp-gzip');
 
 gulp.task('clean', function(){
     return gulp.src('./dist/*')
@@ -15,7 +15,7 @@ gulp.task('clean', function(){
 });
 
 gulp.task('csslint', function(){
-    return gulp.src(['./src/**/*.css', './src/*.css'])
+    return gulp.src(['./src/*.css'])
         .pipe(csslint({
             'adjoining-classes' : false
         }))
@@ -24,7 +24,6 @@ gulp.task('csslint', function(){
 
 gulp.task('style', ['csslint'], function(){
     return gulp.src('./src/*.css')
-        .pipe(autoPrefixer())
         .pipe(cssmin())
         .pipe(concat('vanilla-select.min.css'))
         .pipe(gulp.dest('./dist/'));
@@ -39,9 +38,12 @@ gulp.task('jshint', function(){
 gulp.task('script', ['jshint'], function(){
     return gulp.src('./src/*.js')
         .pipe(stripDebug())
-        //.pipe(uglify())
-        .pipe(concat('vanilla-select.min.js'))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(closureCompiler({
+            compilerPath: 'node_modules/google-closure-compiler/compiler.jar',
+            fileName: 'vanilla-select.min.js'
+        }))
+        //.pipe(gzip())
+        .pipe(gulp.dest('dist'))
 });
 
 gulp.task('build', ['clean', 'style', 'script']);

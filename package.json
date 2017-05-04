@@ -2,19 +2,35 @@
   "name": "vanilla-select",
   "version": "1.0.0",
   "description": "Standalone replacement for select boxes",
+  "main": "./dist/vanilla-select.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vorotina/vanilla-select"
+  },
+  "keywords": [
+    "vanilla",
+    "select",
+    "dropdown",
+    "js"
+  ],
+  "author": {
+    "name": "Kateryna Vorotina",
+    "email": "vorotina@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/vorotina/vanilla-select#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",
     "gulp-cli": "^1.2.1",
+    "gulp-closure-compiler": "^0.4.0",
     "gulp-concat": "^2.6.0",
     "gulp-csslint": "^0.3.0",
     "gulp-cssmin": "^0.1.7",
+    "gulp-gzip": "^1.4.0",
     "gulp-jshint": "^2.0.0",
     "gulp-server-livereload": "^1.9.2",
     "gulp-strip-debug": "^1.1.0",
-    "gulp-uglify": "^1.5.3",
-    "jshint": "^2.9.2",
-    "request": "^2.81.0"
+    "jshint": "^2.9.2"
   }
 }
