@@ -1,9 +1,9 @@
-# vanilla-select.js 
+# vanilla-select
 A vanilla, lightweight (~2.5kb gzipped), configurable select box component. 
 
 [Demo Page](https://vorotina.github.io/vanilla-select/)
 
-## TL;DR
+## Advantages
 * Lightweight
 * No jQuery dependency
 * Elegant API - inspiration taken from [React.Component](https://facebook.github.io/react/docs/react-component.html) 
@@ -16,6 +16,7 @@ A vanilla, lightweight (~2.5kb gzipped), configurable select box component.
 * Font select box has extended width
 * Font dropdown menu opens to the top or the bottom
 * Keyboard navigation
+* Search
 
 
 ## Installation
@@ -37,13 +38,13 @@ Or include directly:
 <!-- Include JavaScript -->
 <script src="/dist/vanilla-select.min.js"></script>
 ```
-## Setup
+## Setup	
 
 ```js
   const source = [{
-  				icon: 'fa-font',
-  				value: 'Amatic SC'
-  			}];
+        icon: 'fa-font',
+        value: 'Amatic SC'
+    }];
   		
   const select = new Select({
             placeholder: 'Select Font',
@@ -70,6 +71,9 @@ Or include directly:
 To setup a local environment: clone this repo, navigate into it's directory in a terminal window and run the following command:
 
 ```npm install```
+
+## Browser compatibility
+vanilla-select is compiled using [Closure Compiler](https://developers.google.com/closure/compiler/) to enable support for [ES5 browsers](http://caniuse.com/#feat=es5). 
 
 ### Gulp tasks
 | Task                | Usage                                                        |
