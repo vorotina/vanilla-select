@@ -1,7 +1,7 @@
 # vanilla-select.js 
 A vanilla, lightweight (~2.5kb gzipped), configurable select box component. 
 
-[Demo](https://jsfiddle.net/5y2stLn6/)
+[Demo Page](https://vorotina.github.io/vanilla-select/)
 
 ## TL;DR
 * Lightweight
@@ -48,11 +48,23 @@ Or include directly:
   const select = new Select({
             placeholder: 'Select Font',
             dataset: source,
+            search: true,
+            noResults: 'No results found',
             onSelected: item => callback(item)
         }).componentMount({
             el: document.querySelector('[ref="select"]')
         });
 ```
+
+## Configuration 
+| Option       | Definition |
+| ------------ | ---------- |
+| placeholder  | Type: String <br />Default: '' <br />Placeholder text |
+| dataset      | Type: Array <br />Default: [] <br />Equivelant to the <option></option> element within a select   |
+| search       | Type: Boolean <br />Default: false <br />Whether a user should be allowed to search |
+| noResults    | Type: String <br />Default: '' <br />The text that is shown when search has returned no results |
+| selected     | Type: Object <br />Default: null <br/>Default selected option 
+| onSelected   | Arguments: item </br>Callback, invoked each time the item is selected, regardless if it changes the value 
 
 ## Development
 To setup a local environment: clone this repo, navigate into it's directory in a terminal window and run the following command:

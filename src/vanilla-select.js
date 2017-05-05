@@ -36,8 +36,8 @@
             this.$el = (ctx && ctx.el) || document.createElement('div');
             this.$defer('mounted', () => {
                 this.$el.innerHTML = '';
-            this.$el = null;
-        });
+                this.$el = null;
+            });
             this.forceUpdate();
             this.componentDidMount();
             return this;
@@ -102,14 +102,16 @@
     class Select extends Component {
         constructor(props) {
             super(props);
+            const selected = this.props.selected;
             this.state = {
-                placeholder: this.props.placeholder || '',
+                placeholder: selected && selected.value || this.props.placeholder || '',
+                selected: selected || null,
                 expanded: false
             };
             this.onDocumentClick = this.onDocumentClick.bind(this);
             this.onComponentClick = this.onComponentClick.bind(this);
             this.onToolboxClick = this.onToolboxClick.bind(this);
-            this.search = new Search(Object.assign({}, this.props, {
+            this.dropdown = new Dropdown(Object.assign({}, this.props, {
                 onSelected: selected => {
                     this.props.onSelected && this.props.onSelected(selected);
                     this.setState(prevState => ({
@@ -135,8 +137,8 @@
             this.setState(prevState => ({
                 expanded: !prevState.expanded
             }), () => {
-                if (this.state.expanded) {
-                    this.search.refs.query.focus();
+                if (this.props.search && this.state.expanded) {
+                    this.dropdown.refs.query.focus();
                 }
             });
         }
@@ -159,20 +161,20 @@
         }
 
         componentDidUnmount() {
-            this.search.componentUnmount();
+            this.dropdown.componentUnmount();
         }
 
         componentDidUpdate() {
             const $toolbox = this.refs.toolbox;
             $toolbox.addEventListener('click', this.onToolboxClick);
             this.$defer('updated', () => $toolbox.removeEventListener('click', this.onToolboxClick));
-            this.search.componentMount({
+            this.dropdown.componentMount({
                 el: this.refs.dropdown
             });
         }
     }
 
-    class Search extends Component {
+    class Dropdown extends Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -206,14 +208,18 @@
         render(props, state) {
             if (state.dataset.length === 0) {
                 return `<input ref="query" type="text" value="${state.query}" class="select__query">
-                    <span class="select__query_noresult">No results found</span>`;
+                    <span class="select__query_noresult">${props.noResults || ''}</span>`;
             }
-            return `<input ref="query" type="text" value="${state.query}" class="select__query">
+            let search = '';
+            if (props.search) {
+                search = `<input ref="query" type="text" value="${state.query}" class="select__query">`;
+            }
+            return `${search}
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
                                 return `
                                     <li class="select__item ${item === state.selected ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
-                                        <i class="select__item_icon fa ${item.icon || ''}" aria-hidden="true"></i>
+                                        <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
                                         <span class="select__item_text">${item.text || item.value}</span>
                                     </li>`;
                     }).join('') }
@@ -221,9 +227,11 @@
         }
 
         componentDidUpdate() {
-            const $query = this.refs.query;
-            $query.addEventListener('change', this.onQueryChanged);
-            this.$defer('updated', () => $query.removeEventListener('change', this.onQueryChanged));
+            if (this.props.search) {
+                const $query = this.refs.query;
+                $query.addEventListener('change', this.onQueryChanged);
+                this.$defer('updated', () => $query.removeEventListener('change', this.onQueryChanged));
+            }
             const $list = this.refs.list;
             $list.addEventListener('click', this.onItemClicked);
             this.$defer('updated', () => $list.removeEventListener('click', this.onItemClicked));

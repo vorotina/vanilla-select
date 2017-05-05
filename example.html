@@ -20,28 +20,38 @@
 		h2 {
 			margin-bottom:10px;
 		}
+
+		h3 {
+			padding-top: 25px;
+			font-weight: normal;
+		}
 	</style>
 </head>
 <body>
 	<div class="content">
 		<h2>EXAMPLE:</h2>
+
+		<h3>Support search:</h3>
 		<div ref="select"></div>
 		<div ref="select"></div>
+
+		<h3>And default selected option:</h3>
+		<div ref="select2"></div>
 	</div>
 
 	<script src="src/vanilla-select.js"></script>
 	<script>
 
 		const source = [{
-			icon: 'fa-font',
-			value: 'Abril Fatface'
+				icon: 'fa fa-font',
+				value: 'Abril Fatface'
 			},
 			{
-				icon: 'fa-font',
+				icon: 'fa fa-font',
 				value: 'Allura'
 			},
 			{
-				icon: 'fa-font',
+				icon: 'fa fa-font',
 				value: 'Amatic SC'
 			}
 		];
@@ -49,11 +59,21 @@
 		let select = Array.from(document.querySelectorAll('[ref="select"]')).map(el => {
 			return new Select({
 				placeholder: 'Select Font',
+				search: true,
+				noResults: 'No results found',
 				dataset: source,
 				onSelected: item => console.log(item)
 			}).componentMount({
 				el: el
 			});
+		});
+
+		let select2 = new Select({
+			dataset: source,
+			selected: source[1],
+			onSelected: item => console.log(item)
+		}).componentMount({
+			el: document.querySelector('[ref="select2"]')
 		});
 
 	</script>
