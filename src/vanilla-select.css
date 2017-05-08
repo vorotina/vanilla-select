@@ -1,7 +1,5 @@
 .select__box {
 	position: relative;
-	font-family: Roboto, Arial;
-	margin: 25px 0;
 }
 
 .select__toolbox {
@@ -40,7 +38,7 @@
 
 .select__dropdown {
 	position: absolute;
-	width: calc(100% - 2px);
+	min-width: 100%;
 	border-radius: 5px;
 	border: 1px solid #2d8682;
 	transition: all .3s;
@@ -72,7 +70,6 @@
 	color: #666;
 }
 
-
 .select__list {
 	width: 100%;
 	max-height: 275px;
@@ -95,11 +92,7 @@
 }
 
 .select__item_icon {
-	width: 1em;
-	height: 1em;
-	line-height: 1em;
 	display: inline-block;
-	text-align: center;
 	margin-right: .25em;
 }
 

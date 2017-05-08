@@ -25,6 +25,11 @@
 			padding-top: 25px;
 			font-weight: normal;
 		}
+
+        .select-box {
+            font-family: Roboto, Arial;
+            margin: 25px 0;
+        }
 	</style>
 </head>
 <body>
@@ -32,11 +37,11 @@
 		<h2>EXAMPLE:</h2>
 
 		<h3>Support search:</h3>
-		<div ref="select"></div>
-		<div ref="select"></div>
+		<div ref="select" class="select-box"></div>
+		<div ref="select" class="select-box"></div>
 
 		<h3>And default selected option:</h3>
-		<div ref="select2"></div>
+		<div ref="select2" class="select-box"></div>
 	</div>
 
 	<script src="src/vanilla-select.js"></script>
@@ -70,7 +75,7 @@
 
 		let select2 = new Select({
 			dataset: source,
-			selected: source[1],
+			selected: source[1].value,
 			onSelected: item => console.log(item)
 		}).componentMount({
 			el: document.querySelector('[ref="select2"]')

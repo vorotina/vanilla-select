@@ -104,7 +104,7 @@
             super(props);
             const selected = this.props.selected;
             this.state = {
-                placeholder: selected && selected.value || this.props.placeholder || '',
+                placeholder: selected || this.props.placeholder || '',
                 selected: selected || null,
                 expanded: false
             };
@@ -218,7 +218,7 @@
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
                                 return `
-                                    <li class="select__item ${item === state.selected ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
+                                    <li class="select__item ${(item === state.selected || item.value === state.selected) ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
                                         <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
                                         <span class="select__item_text">${item.text || item.value}</span>
                                     </li>`;
@@ -233,8 +233,10 @@
                 this.$defer('updated', () => $query.removeEventListener('change', this.onQueryChanged));
             }
             const $list = this.refs.list;
-            $list.addEventListener('click', this.onItemClicked);
-            this.$defer('updated', () => $list.removeEventListener('click', this.onItemClicked));
+            if ($list) {
+                $list.addEventListener('click', this.onItemClicked);
+                this.$defer('updated', () => $list.removeEventListener('click', this.onItemClicked));
+            }
         }
     }
 
