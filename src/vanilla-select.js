@@ -109,7 +109,6 @@
                 expanded: false
             };
             this.onDocumentClick = this.onDocumentClick.bind(this);
-            this.onComponentClick = this.onComponentClick.bind(this);
             this.onToolboxClick = this.onToolboxClick.bind(this);
             this.dropdown = new Dropdown(Object.assign({}, this.props, {
                 onSelected: selected => {
@@ -124,13 +123,11 @@
         }
 
         onDocumentClick(event) {
-            this.setState(prevState => ({
-                expanded: false
-            }));
-        }
-
-        onComponentClick(event) {
-            event.stopPropagation();
+            if (!event.path.some(e => e === this.$el)) {
+                 this.setState(prevState => ({
+                    expanded: false
+                 }));
+            }
         }
 
         onToolboxClick(event) {
@@ -156,8 +153,6 @@
         componentDidMount() {
             document.body.addEventListener('click', this.onDocumentClick);
             this.$defer('mounted', () => document.body.removeEventListener('click', this.onDocumentClick));
-            this.$el.addEventListener('click', this.onComponentClick);
-            this.$defer('mounted', () => this.$el.removeEventListener('click', this.onComponentClick));
         }
 
         componentDidUnmount() {
