@@ -30,9 +30,9 @@ gulp.task('csslint', function(){
 });
 
 gulp.task('style', ['sass', 'csslint'], function() {
-    return gulp.src('./src/*.css')
+    return gulp.src('./dist/*.css')
         .pipe(cssmin())
-        .pipe(concat('vanilla-select.min.css'))
+        .pipe(concat('vanilla-select.css'))
         .pipe(gulp.dest('./dist/'));
 });
 
