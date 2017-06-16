@@ -1,11 +1,11 @@
-# vanilla-select
+# vanilla-select [![npm version](https://badge.fury.io/js/vanilla-select.svg)](https://www.npmjs.com/package/vanilla-select)
 A vanilla, lightweight (~2.5kb gzipped), configurable select box component. 
 
 [Demo Page](https://vorotina.github.io/vanilla-select/)
 
 ## Advantages
 * Lightweight
-* No jQuery dependency
+* No Dependencies
 * Elegant API - inspiration taken from [React.Component](https://facebook.github.io/react/docs/react-component.html) 
 
 ### Features

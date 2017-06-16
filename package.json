@@ -20,6 +20,7 @@
   "license": "MIT",
   "homepage": "https://github.com/vorotina/vanilla-select#readme",
   "devDependencies": {
+    "google-closure-compiler": "^20170521.0.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-cli": "^1.2.1",
@@ -29,7 +30,9 @@
     "gulp-cssmin": "^0.1.7",
     "gulp-gzip": "^1.4.0",
     "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
     "gulp-server-livereload": "^1.9.2",
-    "gulp-strip-debug": "^1.1.0"
+    "gulp-strip-debug": "^1.1.0",
+    "jshint": "^2.9.4"
   }
 }

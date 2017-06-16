@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
+var sass = require('gulp-sass');
 var csslint = require('gulp-csslint');
 var cssmin = require('gulp-cssmin');
 var concat = require('gulp-concat');
@@ -14,15 +15,21 @@ gulp.task('clean', function(){
         .pipe(clean());
 });
 
+gulp.task('sass', function () {
+    return gulp.src('./src/**.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('csslint', function(){
-    return gulp.src(['./src/*.css'])
+    return gulp.src(['./dist/*.css'])
         .pipe(csslint({
             'adjoining-classes' : false
         }))
         .pipe(csslint.reporter());
 });
 
-gulp.task('style', ['csslint'], function() {
+gulp.task('style', ['sass', 'csslint'], function() {
     return gulp.src('./src/*.css')
         .pipe(cssmin())
         .pipe(concat('vanilla-select.min.css'))

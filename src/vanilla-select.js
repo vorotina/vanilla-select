@@ -141,7 +141,7 @@
         }
 
         render(props, state) {
-            return `<div class="select__box">
+            return `<div class="select__box ${ state.expanded ? "select__box--expanded" : "" }">
                     <div ref="toolbox" class="select__toolbox">
                         <i class="select__arrow" aria-hidden="true"></i>
                         <div class="select__label">${state.placeholder}</div>
@@ -175,7 +175,8 @@
             this.state = {
                 query: "",
                 dataset: this.props.dataset || [],
-                selected: this.props.selected
+                selected: this.props.selected,
+                openDownwards: true
             };
             this.onQueryChanged = this.onQueryChanged.bind(this);
             this.onItemClicked = this.onItemClicked.bind(this);
@@ -221,7 +222,21 @@
                     </ul>`;
         }
 
+
+        componentDidMount(){
+            const bounds = this.$el.getBoundingClientRect();
+            const openDownwards = bounds.top + bounds.height < window.innerHeight;
+            if (this.state.openDownwards !== openDownwards) {
+                this.setState(prevState => ({
+                    openDownwards: openDownwards
+                }));
+            }
+        }
+
         componentDidUpdate() {
+            if (!this.state.openDownwards) {
+                this.$el.style.marginTop = - this.$el.clientHeight - this.$el.parentElement.clientHeight;
+            }
             if (this.props.search) {
                 const $query = this.refs.query;
                 $query.addEventListener('change', this.onQueryChanged);
