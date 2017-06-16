@@ -123,7 +123,7 @@
         }
 
         onDocumentClick(event) {
-            if (!event.path.some(e => e === this.$el)) {
+            if (event.$owner !== this) {
                  this.setState(prevState => ({
                     expanded: false
                  }));
@@ -131,6 +131,7 @@
         }
 
         onToolboxClick(event) {
+            event.$owner = this;
             this.setState(prevState => ({
                 expanded: !prevState.expanded
             }), () => {
