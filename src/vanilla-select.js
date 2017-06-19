@@ -224,19 +224,12 @@
         }
 
 
-        componentDidMount(){
-            const bounds = this.$el.getBoundingClientRect();
-            const openDownwards = bounds.top + bounds.height < window.innerHeight;
-            if (this.state.openDownwards !== openDownwards) {
-                this.setState(prevState => ({
-                    openDownwards: openDownwards
-                }));
-            }
-        }
 
         componentDidUpdate() {
-            if (!this.state.openDownwards) {
-                this.$el.style.marginTop = - this.$el.clientHeight - this.$el.parentElement.clientHeight + 'px';
+            const el = this.$el;
+            const bounds = el.getBoundingClientRect();
+            if (bounds.top + bounds.height > window.innerHeight) {
+                el.style.marginTop = - el.clientHeight - el.parentElement.clientHeight + 'px';
             }
             if (this.props.search) {
                 const $query = this.refs.query;
