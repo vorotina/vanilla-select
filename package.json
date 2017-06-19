@@ -1,6 +1,6 @@
 {
   "name": "vanilla-select",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Standalone replacement for select boxes",
   "main": "./dist/vanilla-select.min.js",
   "repository": {

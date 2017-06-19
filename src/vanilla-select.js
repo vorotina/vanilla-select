@@ -236,7 +236,7 @@
 
         componentDidUpdate() {
             if (!this.state.openDownwards) {
-                this.$el.style.marginTop = - this.$el.clientHeight - this.$el.parentElement.clientHeight;
+                this.$el.style.marginTop = - this.$el.clientHeight - this.$el.parentElement.clientHeight + 'px';
             }
             if (this.props.search) {
                 const $query = this.refs.query;
