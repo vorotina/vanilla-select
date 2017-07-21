@@ -1,6 +1,6 @@
 {
   "name": "vanilla-select",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Standalone replacement for select boxes",
   "main": "./dist/vanilla-select.min.js",
   "repository": {
@@ -34,5 +34,8 @@
     "gulp-server-livereload": "^1.9.2",
     "gulp-strip-debug": "^1.1.0",
     "jshint": "^2.9.4"
+  },
+  "dependencies": {
+    "element-closest": "^2.0.2"
   }
 }

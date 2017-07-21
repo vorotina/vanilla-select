@@ -32,7 +32,6 @@ gulp.task('csslint', function(){
 gulp.task('style', ['sass', 'csslint'], function() {
     return gulp.src('./dist/*.css')
         .pipe(cssmin())
-        .pipe(concat('vanilla-select.css'))
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -51,6 +50,16 @@ gulp.task('script', function() {
         }))
         .pipe(gulp.dest('dist'))
         .pipe(gzip())
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('script-ie', function() {
+    return gulp.src(['./node_modules/element-closest/element-closest.js', './src/*.js'])
+        .pipe(stripDebug())
+        .pipe(closureCompiler({
+            compilerPath: 'node_modules/google-closure-compiler/compiler.jar',
+            fileName: 'vanilla-select-ie.min.js'
+        }))
         .pipe(gulp.dest('dist'))
 });
 

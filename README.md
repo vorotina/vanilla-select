@@ -7,16 +7,7 @@ A vanilla, lightweight (~2.5kb gzipped), configurable select box component.
 * Lightweight
 * No Dependencies
 * Elegant API - inspiration taken from [React.Component](https://facebook.github.io/react/docs/react-component.html) 
-
-### Features
-* Dropdown should show the font preview
-* Font should update in the font face selected
-* Dropdown should not exceed the limits of the screen
-* Dropdown should always be on top of other elements in the editor (zIndex)
-* Font select box has extended width
-* Font dropdown menu opens to the top or the bottom
-* Keyboard navigation
-* Search
+* Fast search
 
 
 ## Installation
@@ -75,11 +66,26 @@ To setup a local environment: clone this repo, navigate into it's directory in a
 ## Browser compatibility
 vanilla-select is compiled using [Closure Compiler](https://developers.google.com/closure/compiler/) to enable support for [ES5 browsers](http://caniuse.com/#feat=es5). 
 
+### Browsers
+Edge 15+
+Chrome 41+
+FireFox 35+
+Opera 28+
+Safari 9+
+
+If you need to support IE11 and IE Edge14 - use vanilla-select-ie.min.js bundle. 
+It includes [element-closest](https://github.com/jonathantneal/closest/blob/master/element-closest.js) polyfill.
+
+
 ### Gulp tasks
 | Task                | Usage                                                        |
 | ------------------- | ------------------------------------------------------------ |
 | `gulp build`         | Build JS an CSS                                              |
 | `gulp serve`         | Fire up local server for development                         |
+
+### Roadmap
+* Keyboard navigation
+
 
 ## License
 MIT License
