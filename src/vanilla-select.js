@@ -194,12 +194,15 @@
         }
 
         onItemClicked(event) {
-            const index = event.target.closest('li').dataset.index;
-            const selected = this.state.dataset[index];
-            this.props.onSelected && this.props.onSelected(selected);
-            this.setState(prevState => ({
-                selected: selected
-            }));
+            const target = event.target.closest('li');
+            if (target && this.state) {
+                const index = target.dataset.index;
+                const selected = this.state.dataset[index];
+                this.props.onSelected && this.props.onSelected(selected);
+                this.setState(prevState => ({
+                    selected: selected
+                }));
+            }
         }
 
         render(props, state) {
