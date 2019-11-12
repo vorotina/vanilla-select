@@ -30,6 +30,9 @@
             font-family: Roboto, Arial;
             margin: 25px 0;
         }
+		[ref="list"] {
+			max-height: 200px;
+		}
 	</style>
 </head>
 <body>
@@ -61,6 +64,15 @@
 			}
 		];
 
+		const source2 = [];
+		let optionsCount = 20;
+		while (optionsCount--) {
+			source2.push({
+				icon: `blabla ${optionsCount}`,
+				value: `Option${optionsCount}`
+			})
+		}
+
 		let select = Array.from(document.querySelectorAll('[ref="select"]')).map(el => {
 			return new Select({
 				placeholder: 'Select Font',
@@ -74,8 +86,8 @@
 		});
 
 		let select2 = new Select({
-			dataset: source,
-			selected: source[1].value,
+			dataset: source2,
+			selected: source2[source2.length - 1].value,
 			onSelected: item => console.log(item)
 		}).componentMount({
 			el: document.querySelector('[ref="select2"]')
