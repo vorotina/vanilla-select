@@ -9,6 +9,8 @@
 }('Select', function () {
     'use strict';
 
+    const __selectItemClass = "select__item";
+    const __selectedItemClass = "select__item--selected";
     class Component {
 
         constructor(props) {
@@ -167,6 +169,14 @@
             this.dropdown.componentMount({
                 el: this.refs.dropdown
             });
+            if (this.state.expanded && this.dropdown.state.selected) {
+                // scroll selected option into view, if any
+                const selectedElement = this.dropdown.$el.querySelector(`.${__selectedItemClass}`);
+                const list = this.dropdown.$el.querySelector(`[ref=list]`);
+                if (list && selectedElement) {
+                    list.scrollTop = selectedElement.offsetTop;
+                }
+            }
         }
     }
 
@@ -218,7 +228,7 @@
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
                                 return `
-                                    <li class="select__item ${(item === state.selected || item.value === state.selected) ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
+                                    <li class="${__selectItemClass} ${(item === state.selected || item.value === state.selected) ? __selectedItemClass : ""}" data-index="${index}" data-value="${item.value || item.text}">
                                         <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
                                         <span class="select__item_text">${item.text || item.value}</span>
                                     </li>`;
