@@ -104,7 +104,7 @@
             super(props);
             const selected = this.props.selected;
             this.state = {
-                placeholder: selected || this.props.placeholder || '',
+                placeholder: selected ? selected.text : selected || this.props.placeholder || '',
                 selected: selected || null,
                 expanded: false
             };

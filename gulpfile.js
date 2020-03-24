@@ -53,16 +53,6 @@ gulp.task('script', function() {
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task('script-ie', function() {
-    return gulp.src(['./node_modules/element-closest/element-closest.js', './src/*.js'])
-        .pipe(stripDebug())
-        .pipe(closureCompiler({
-            compilerPath: 'node_modules/google-closure-compiler/compiler.jar',
-            fileName: 'vanilla-select-ie.min.js'
-        }))
-        .pipe(gulp.dest('dist'))
-});
-
 gulp.task('build', ['clean', 'style', 'script']);
 
 gulp.task('serve', function() {
