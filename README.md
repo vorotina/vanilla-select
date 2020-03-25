@@ -73,6 +73,10 @@ FireFox 35+
 Opera 28+
 Safari 9+
 
+If you need to support IE11 and IE Edge14 - use vanilla-select-ie.min.js bundle. 
+It includes [element-closest](https://github.com/jonathantneal/closest/blob/master/element-closest.js) polyfill.
+
+
 ### Gulp tasks
 | Task                | Usage                                                        |
 | ------------------- | ------------------------------------------------------------ |
