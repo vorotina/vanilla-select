@@ -220,7 +220,7 @@
                                 return `
                                     <li class="select__item ${(item === state.selected || item.value === state.selected) ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
                                         <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
-                                        <span class="select__item_text">${item.text || item.value}</span>
+                                        <span class="select__item_text">${item.content || item.text || item.value}</span>
                                     </li>`;
                     }).join('') }
                     </ul>`;
