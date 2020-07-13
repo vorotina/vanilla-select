@@ -34,7 +34,7 @@
     "gulp-server-livereload": "^1.9.2",
     "gulp-strip-debug": "^1.1.0",
     "jshint": "^2.9.4",
-    "standard-version": "^4.4.0"
+    "standard-version": "^8.0.1"
   },
   "dependencies": {
     "element-closest": "^2.0.2"
