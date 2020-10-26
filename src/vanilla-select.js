@@ -186,7 +186,7 @@
         onQueryChanged(event) {
             const query = event.target.value;
             const match = new RegExp(query, 'gi');
-            const dataset = (this.props.dataset || []).filter(item => match.test(item.text || item.value || ''));
+            const dataset = (this.props.dataset || []).filter(item => match.test(item.text || item.value || item.content || ''));
             this.setState(prevState => ({
                 query: query,
                 dataset: dataset
@@ -217,11 +217,14 @@
             return `${search}
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
-                                return `
-                                    <li class="select__item ${(item === state.selected || item.value === state.selected) ? "select__item--selected" : ""}" data-index="${index}" data-value="${item.value || item.text}">
-                                        <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
-                                        <span class="select__item_text">${item.content || item.text || item.value}</span>
-                                    </li>`;
+                            const selected = (item === state.selected || item.value === state.selected) ? "select__item--selected" : "";
+                            const value = item.value || item.text || item.conten;
+                            const itemClass = item.class || "";
+                            return `
+                                <li class="select__item ${selected} ${itemClass}" data-index="${index}" data-value="${value}">
+                                    <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
+                                    <span class="select__item_text">${value}</span>
+                                </li>`;
                     }).join('') }
                     </ul>`;
         }

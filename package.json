@@ -17,6 +17,10 @@
     "name": "Kateryna Vorotina",
     "email": "vorotina@gmail.com"
   },
+  "scripts": {
+    "build": "gulp build",
+    "serve": "gulp serve"
+  },
   "license": "MIT",
   "homepage": "https://github.com/vorotina/vanilla-select#readme",
   "devDependencies": {
