@@ -34,7 +34,7 @@
     "gulp-cssmin": "^0.1.7",
     "gulp-gzip": "^1.4.0",
     "gulp-jshint": "^2.0.4",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.1.0",
     "gulp-server-livereload": "^1.9.2",
     "gulp-strip-debug": "^1.1.0",
     "jshint": "^2.9.4",
@@ -42,5 +42,8 @@
   },
   "dependencies": {
     "element-closest": "^2.0.2"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   }
 }
