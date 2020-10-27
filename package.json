@@ -1,6 +1,6 @@
 {
   "name": "vanilla-select",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Standalone replacement for select boxes",
   "main": "./dist/vanilla-select.min.js",
   "repository": {
@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "gulp build",
-    "serve": "gulp serve"
+    "serve": "gulp serve",
+    "release": "standard-version"
   },
   "license": "MIT",
   "homepage": "https://github.com/vorotina/vanilla-select#readme",
