@@ -25,9 +25,9 @@ Or include directly:
 
 ```html
 <!-- Include CSS -->
-<link rel="stylesheet" href="dist/vanilla-select.min.css">
+<link rel="stylesheet" href="dist/vanilla-select.css">
 <!-- Include JavaScript -->
-<script src="/dist/vanilla-select.min.js"></script>
+<script src="/src/vanilla-select.js"></script>
 ```
 ## Setup	
 
@@ -61,10 +61,7 @@ Or include directly:
 ## Development
 To setup a local environment: clone this repo, navigate into it's directory in a terminal window and run the following command:
 
-```npm install```
-
-## Browser compatibility
-vanilla-select is compiled using [Closure Compiler](https://developers.google.com/closure/compiler/) to enable support for [ES5 browsers](http://caniuse.com/#feat=es5). 
+```yarn install```
 
 ### Browsers
 Edge 15+
@@ -73,15 +70,13 @@ FireFox 35+
 Opera 28+
 Safari 9+
 
-If you need to support IE11 and IE Edge14 - use vanilla-select-ie.min.js bundle. 
-It includes [element-closest](https://github.com/jonathantneal/closest/blob/master/element-closest.js) polyfill.
-
 
 ### Gulp tasks
 | Task                | Usage                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| `gulp build`         | Build JS an CSS                                              |
-| `gulp serve`         | Fire up local server for development                         |
+| `yarn build`         | Build JS an CSS                                             |
+| `yarn serve`         | Fire up local server for development                        |
+| `yarn release`       | Bump a version                                              |
 
 ### Roadmap
 * Keyboard navigation
