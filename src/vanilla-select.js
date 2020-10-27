@@ -186,7 +186,7 @@
         onQueryChanged(event) {
             const query = event.target.value;
             const match = new RegExp(query, 'gi');
-            const dataset = (this.props.dataset || []).filter(item => match.test(item.text || item.value || item.content || ''));
+            const dataset = (this.props.dataset || []).filter(item => match.test(item.text || item.value || ''));
             this.setState(prevState => ({
                 query: query,
                 dataset: dataset
@@ -218,7 +218,7 @@
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
                             const selected = (item === state.selected || item.value === state.selected) ? "select__item--selected" : "";
-                            const value = item.value || item.text || item.conten;
+                            const value = item.value || item.text || item.content;
                             const itemClass = item.class || "";
                             return `
                                 <li class="select__item ${selected} ${itemClass}" data-index="${index}" data-value="${value}">

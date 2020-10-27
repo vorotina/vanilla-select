@@ -1,6 +1,6 @@
 {
   "name": "vanilla-select",
-  "version": "1.0.18",
+  "version": "1.0.21",
   "description": "Standalone replacement for select boxes",
   "main": "./dist/vanilla-select.min.js",
   "repository": {
@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "build-ie": "gulp script-ie",
     "serve": "gulp serve"
   },
   "license": "MIT",

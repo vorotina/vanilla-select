@@ -1,6 +1,3 @@
 node_modules/
 .idea/
 
-dist/vanilla-select-ie.min.js
-dist/vanilla-select.min.js
-dist/vanilla-select.min.js.gz
