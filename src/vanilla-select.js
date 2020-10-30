@@ -218,7 +218,7 @@
                     <ul ref="list" class="select__list">
                         ${ state.dataset.map(function(item, index){
                             const selected = (item === state.selected || item.value === state.selected) ? "select__item--selected" : "";
-                            const value = item.value || item.text || item.content;
+                            const value = item.content || item.text || item.value;
                             const itemClass = item.class || "";
                             return `
                                 <li class="select__item ${selected} ${itemClass}" data-index="${index}" data-value="${value}">
