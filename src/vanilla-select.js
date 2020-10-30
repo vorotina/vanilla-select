@@ -221,7 +221,7 @@
                             const value = item.content || item.text || item.value;
                             const itemClass = item.class || "";
                             return `
-                                <li class="select__item ${selected} ${itemClass}" data-index="${index}" data-value="${value}">
+                                <li class="select__item ${selected} ${itemClass}" data-index="${index}" data-value="${item.value || item.text}">
                                     <i class="select__item_icon ${item.icon || ''}" aria-hidden="true"></i>
                                     <span class="select__item_text">${value}</span>
                                 </li>`;
